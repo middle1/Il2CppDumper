@@ -124,7 +124,11 @@ fieldDefaultValuesDic = fieldDefaultValues
 
 Console.WriteLine("3.7");
 
-parameterDefaultValuesDic = parameterDefaultValues.ToDictionary(x => x.parameterIndex);
+parameterDefaultValuesDic = parameterDefaultValues
+    .GroupBy(x => x.parameterIndex)
+    .Select(g => g.First())
+    .ToDictionary(x => x.parameterIndex);
+
 Console.WriteLine("3.8");
 
 propertyDefs = ReadMetadataClassArray<Il2CppPropertyDefinition>(header.propertiesOffset, header.propertiesSize);
