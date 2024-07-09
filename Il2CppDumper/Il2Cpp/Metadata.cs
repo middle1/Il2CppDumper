@@ -100,22 +100,56 @@ namespace Il2CppDumper
             }
             Console.WriteLine("3");
             typeDefs = ReadMetadataClassArray<Il2CppTypeDefinition>(header.typeDefinitionsOffset, header.typeDefinitionsSize);
-            methodDefs = ReadMetadataClassArray<Il2CppMethodDefinition>(header.methodsOffset, header.methodsSize);
-            parameterDefs = ReadMetadataClassArray<Il2CppParameterDefinition>(header.parametersOffset, header.parametersSize);
-            fieldDefs = ReadMetadataClassArray<Il2CppFieldDefinition>(header.fieldsOffset, header.fieldsSize);
-            var fieldDefaultValues = ReadMetadataClassArray<Il2CppFieldDefaultValue>(header.fieldDefaultValuesOffset, header.fieldDefaultValuesSize);
-            var parameterDefaultValues = ReadMetadataClassArray<Il2CppParameterDefaultValue>(header.parameterDefaultValuesOffset, header.parameterDefaultValuesSize);
-            fieldDefaultValuesDic = fieldDefaultValues.ToDictionary(x => x.fieldIndex);
-            parameterDefaultValuesDic = parameterDefaultValues.ToDictionary(x => x.parameterIndex);
-            propertyDefs = ReadMetadataClassArray<Il2CppPropertyDefinition>(header.propertiesOffset, header.propertiesSize);
-            interfaceIndices = ReadClassArray<int>(header.interfacesOffset, header.interfacesSize / 4);
-            nestedTypeIndices = ReadClassArray<int>(header.nestedTypesOffset, header.nestedTypesSize / 4);
-            eventDefs = ReadMetadataClassArray<Il2CppEventDefinition>(header.eventsOffset, header.eventsSize);
-            genericContainers = ReadMetadataClassArray<Il2CppGenericContainer>(header.genericContainersOffset, header.genericContainersSize);
-            genericParameters = ReadMetadataClassArray<Il2CppGenericParameter>(header.genericParametersOffset, header.genericParametersSize);
-            constraintIndices = ReadClassArray<int>(header.genericParameterConstraintsOffset, header.genericParameterConstraintsSize / 4);
-            vtableMethods = ReadClassArray<uint>(header.vtableMethodsOffset, header.vtableMethodsSize / 4);
-            stringLiterals = ReadMetadataClassArray<Il2CppStringLiteral>(header.stringLiteralOffset, header.stringLiteralSize);
+Console.WriteLine("3.1");
+
+methodDefs = ReadMetadataClassArray<Il2CppMethodDefinition>(header.methodsOffset, header.methodsSize);
+Console.WriteLine("3.2");
+
+parameterDefs = ReadMetadataClassArray<Il2CppParameterDefinition>(header.parametersOffset, header.parametersSize);
+Console.WriteLine("3.3");
+
+fieldDefs = ReadMetadataClassArray<Il2CppFieldDefinition>(header.fieldsOffset, header.fieldsSize);
+Console.WriteLine("3.4");
+
+var fieldDefaultValues = ReadMetadataClassArray<Il2CppFieldDefaultValue>(header.fieldDefaultValuesOffset, header.fieldDefaultValuesSize);
+Console.WriteLine("3.5");
+
+var parameterDefaultValues = ReadMetadataClassArray<Il2CppParameterDefaultValue>(header.parameterDefaultValuesOffset, header.parameterDefaultValuesSize);
+Console.WriteLine("3.6");
+
+fieldDefaultValuesDic = fieldDefaultValues.ToDictionary(x => x.fieldIndex);
+Console.WriteLine("3.7");
+
+parameterDefaultValuesDic = parameterDefaultValues.ToDictionary(x => x.parameterIndex);
+Console.WriteLine("3.8");
+
+propertyDefs = ReadMetadataClassArray<Il2CppPropertyDefinition>(header.propertiesOffset, header.propertiesSize);
+Console.WriteLine("3.9");
+
+interfaceIndices = ReadClassArray<int>(header.interfacesOffset, header.interfacesSize / 4);
+Console.WriteLine("3.10");
+
+nestedTypeIndices = ReadClassArray<int>(header.nestedTypesOffset, header.nestedTypesSize / 4);
+Console.WriteLine("3.11");
+
+eventDefs = ReadMetadataClassArray<Il2CppEventDefinition>(header.eventsOffset, header.eventsSize);
+Console.WriteLine("3.12");
+
+genericContainers = ReadMetadataClassArray<Il2CppGenericContainer>(header.genericContainersOffset, header.genericContainersSize);
+Console.WriteLine("3.13");
+
+genericParameters = ReadMetadataClassArray<Il2CppGenericParameter>(header.genericParametersOffset, header.genericParametersSize);
+Console.WriteLine("3.14");
+
+constraintIndices = ReadClassArray<int>(header.genericParameterConstraintsOffset, header.genericParameterConstraintsSize / 4);
+Console.WriteLine("3.15");
+
+vtableMethods = ReadClassArray<uint>(header.vtableMethodsOffset, header.vtableMethodsSize / 4);
+Console.WriteLine("3.16");
+
+stringLiterals = ReadMetadataClassArray<Il2CppStringLiteral>(header.stringLiteralOffset, header.stringLiteralSize);
+Console.WriteLine("3.17");
+
             Console.WriteLine("4");
             if (Version > 16)
             {
