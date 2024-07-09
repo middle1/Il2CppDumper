@@ -131,6 +131,7 @@ parameterDefaultValuesDic = parameterDefaultValues
 
 Console.WriteLine("3.8");
 
+Console.WriteLine("header.propertiesSize: " + header.propertiesSize);
 propertyDefs = ReadMetadataClassArray<Il2CppPropertyDefinition>(header.propertiesOffset, header.propertiesSize);
 Console.WriteLine("3.9");
 
