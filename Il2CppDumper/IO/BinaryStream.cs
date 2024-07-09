@@ -135,7 +135,7 @@ namespace Il2CppDumper
                     }
                     if (versionAttributes?.Length > 0)
                     {
-                        Console.Log("Version attribute > 0");
+                        Console.WriteLine("Version attribute > 0");
                         var read = false;
                         foreach (var versionAttribute in versionAttributes)
                         {
