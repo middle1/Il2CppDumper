@@ -117,8 +117,10 @@ Console.WriteLine("3.5");
 var parameterDefaultValues = ReadMetadataClassArray<Il2CppParameterDefaultValue>(header.parameterDefaultValuesOffset, header.parameterDefaultValuesSize);
 Console.WriteLine("3.6");
 
-fieldDefaultValuesDic = fieldDefaultValues.GroupBy(x => x.fieldIndex)
-                                           .ToDictionary(g => g.Key, g => g.ToList());
+fieldDefaultValuesDic = fieldDefaultValues
+    .GroupBy(x => x.fieldIndex)
+    .Select(g => g.First())
+    .ToDictionary(x => x.fieldIndex);
 
 Console.WriteLine("3.7");
 
