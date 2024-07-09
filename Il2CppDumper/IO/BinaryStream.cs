@@ -115,6 +115,7 @@ namespace Il2CppDumper
         public T ReadClass<T>() where T : new()
         {
             var type = typeof(T);
+            Console.WriteLine("Reading class. Type: " + type.Name + " IS Primitive: " + type.IsPrimitive);
             if (type.IsPrimitive)
             {
                 return (T)ReadPrimitive(type);
@@ -134,6 +135,7 @@ namespace Il2CppDumper
                     }
                     if (versionAttributes?.Length > 0)
                     {
+                        Console.Log("Version attribute > 0");
                         var read = false;
                         foreach (var versionAttribute in versionAttributes)
                         {
