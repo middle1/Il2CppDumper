@@ -77,11 +77,13 @@ namespace Il2CppDumper
                     }
                 }
             }
+            Console.WriteLine("1");
             imageDefs = ReadMetadataClassArray<Il2CppImageDefinition>(header.imagesOffset, header.imagesSize);
             if (Version == 24.2 && header.assembliesSize / 68 < imageDefs.Length)
             {
                 Version = 24.4;
             }
+            Console.WriteLine("2");
             var v241Plus = false;
             if (Version == 24.1 && header.assembliesSize / 64 == imageDefs.Length)
             {
@@ -96,6 +98,7 @@ namespace Il2CppDumper
             {
                 Version = 24.1;
             }
+            Console.WriteLine("3");
             typeDefs = ReadMetadataClassArray<Il2CppTypeDefinition>(header.typeDefinitionsOffset, header.typeDefinitionsSize);
             methodDefs = ReadMetadataClassArray<Il2CppMethodDefinition>(header.methodsOffset, header.methodsSize);
             parameterDefs = ReadMetadataClassArray<Il2CppParameterDefinition>(header.parametersOffset, header.parametersSize);
@@ -113,6 +116,7 @@ namespace Il2CppDumper
             constraintIndices = ReadClassArray<int>(header.genericParameterConstraintsOffset, header.genericParameterConstraintsSize / 4);
             vtableMethods = ReadClassArray<uint>(header.vtableMethodsOffset, header.vtableMethodsSize / 4);
             stringLiterals = ReadMetadataClassArray<Il2CppStringLiteral>(header.stringLiteralOffset, header.stringLiteralSize);
+            Console.WriteLine("4");
             if (Version > 16)
             {
                 fieldRefs = ReadMetadataClassArray<Il2CppFieldRef>(header.fieldRefsOffset, header.fieldRefsSize);
@@ -133,6 +137,7 @@ namespace Il2CppDumper
             {
                 attributeDataRanges = ReadMetadataClassArray<Il2CppCustomAttributeDataRange>(header.attributeDataRangeOffset, header.attributeDataRangeSize);
             }
+            Console.WriteLine("5");
             if (Version > 24)
             {
                 attributeTypeRangesDic = new Dictionary<Il2CppImageDefinition, Dictionary<uint, int>>();
@@ -154,6 +159,7 @@ namespace Il2CppDumper
                     }
                 }
             }
+            Console.WriteLine("6");
             if (Version <= 24.1)
             {
                 rgctxEntries = ReadMetadataClassArray<Il2CppRGCTXDefinition>(header.rgctxEntriesOffset, header.rgctxEntriesCount);
