@@ -43,11 +43,13 @@ namespace Il2CppDumper
         public Metadata(Stream stream) : base(stream)
         {
             var sanity = ReadUInt32();
+            Console.WriteLine("Sanity: " + sanity);
             if (sanity != 0xFAB11BAF)
             {
                 throw new InvalidDataException("ERROR: Metadata file supplied is not valid metadata file.");
             }
             var version = ReadInt32();
+            Console.WriteLine("Version " + version);
             if (version < 0 || version > 1000)
             {
                 throw new InvalidDataException("ERROR: Metadata file supplied is not valid metadata file.");
@@ -57,6 +59,7 @@ namespace Il2CppDumper
                 throw new NotSupportedException($"ERROR: Metadata file supplied is not a supported version[{version}].");
             }
             Version = version;
+            Console.WriteLine("Version2: " + Version);
             header = ReadClass<Il2CppGlobalMetadataHeader>(0);
             if (version == 24)
             {
